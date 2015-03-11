@@ -1,0 +1,3 @@
+thesis_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ThesisBundle:Default:index }

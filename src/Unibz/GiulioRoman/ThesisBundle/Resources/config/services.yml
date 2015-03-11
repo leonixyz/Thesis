@@ -1,0 +1,4 @@
+services:
+#    thesis.example:
+#        class: Unibz\GiulioRoman\ThesisBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
