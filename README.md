@@ -1,69 +1,95 @@
-Symfony Standard Edition
-========================
+#Spatial analysis in biology#
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony2
-application that you can use as the skeleton for your new applications.
+In spatial analysis, and especially when dealing with life forms, the results
+obtained from a computer algorithm have to be semantically selected in order
+to become useful.  
+For example, it is meaningless to know that every plant lives at least within
+a distance of 20,000 Km from another one, because we already know that all
+plants lives on the Earth, and that Earths circumference is around 40,000 Km.
+Instead, we are generally more interested in knowing that a particular plant
+species lives only in a region, or that some animal species tend to avoid 
+entering a particular space. By knowing these latter results, and thanks to a
+semantic fied that computer does not yet own, we are able to guess the reasons
+for these facts to happen.  
+Generally, we are intested only in a subset of all the results that an analysis
+can produce, because some are obvious, and others are completely meaningless.
+For this reason, it would be very useful to have a software that helps us
+in finding correlations between spatial data, by presenting a set of results
+obtained by applying all kind of known spatial operations that could let emerge
+some new knowledge.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+---
 
-What's inside?
---------------
+###Operations between spatial elements###
 
-The Symfony Standard Edition is configured with the following defaults:
+Spatial elements are generally of three kinds:
 
-  * An AppBundle you can use to start coding;
+ 1. **Points**: i.e. representing positions
+ 2. **Lines**: i.e. representing paths
+ 3. **Polygons**: i.e. representing regions
 
-  * Twig as the only configured template engine;
+These three kind of geometric elements can relate to each other in a limited
+number of ways, however, if we start considering also some transformations that
+we could apply to them, new relationships pops up.   
+A powerful transformation is the *buffer* operation: it takes a geometric
+element and a range as input, and returns all points that are within that range
+from the element. A buffered point becomes a circle, a buffered line becomes a
+polygon, and a buffered polygon is just a bigger polygon.   
+By extending our analysis with this simple operation, we have at disposal a
+number of new ways to search for correlations. Lets now enumerate them,
+dividing them by the types of geometric elements that interact.
 
-  * Doctrine ORM/DBAL;
 
-  * Swiftmailer;
+####Point ↔ Point####
 
-  * Annotations enabled for everything.
+ * given two simple elements, calculate the distance between them
+ * by buffering a point, check whether the other one is contained in the
+   buffer surface
+ * by buffering both points, calculate the area they share
 
-It comes pre-configured with the following bundles:
+####Point ↔ Line####
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+ * given two simple elements, calculate the minimum distance between them
+ * given two simple elements, check whether the point lies on the line
+ * by buffering the line, check whether the point is contained in the buffer
+   surface
+ * by buffering the point, calculate the length of the line segment that
+   intersects the buffer surface
+ * by buffering both of them, calculate the area they share
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+####Point ↔ Polygon####
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+ * given a simple point, calculate the distance between them
+ * given a simple point, check whether it is contained in the polygon
+ * by buffering the point, calculate the area they share
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+####Line ↔ Line####
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+ * given two simple elements, calculate the minimum distance between them
+ * given two simple elements, check whether they intersect
+ * by buffering one of the two lines, calculate the length of the segment of
+   the other line that intersects the buffer surface
+ * by buffering both lines, calculate the area they share
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+####Line ↔ Polygon####
+ 
+ * given a simple line, calculate the minimum distance between them
+ * given a simple line, if it intersects the polygon, calculate the length of
+   the intersection
+ * by buffering the line, calculate the area the two surfaces share
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+####Polygon ↔ Polygon####
 
-  * [**AsseticBundle**][12] - Adds support for Assetic, an asset processing
-    library
+ * calculate the minimum distance between them
+ * calculate the area they share
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+###Ways of performing the calculations involving buffers###
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  http://symfony.com/doc/2.6/book/installation.html
-[6]:  http://symfony.com/doc/2.6/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  http://symfony.com/doc/2.6/book/doctrine.html
-[8]:  http://symfony.com/doc/2.6/book/templating.html
-[9]:  http://symfony.com/doc/2.6/book/security.html
-[10]: http://symfony.com/doc/2.6/cookbook/email.html
-[11]: http://symfony.com/doc/2.6/cookbook/logging/monolog.html
-[12]: http://symfony.com/doc/2.6/cookbook/assetic/asset_management.html
-[13]: http://symfony.com/doc/2.6/bundles/SensioGeneratorBundle/index.html
+When dealing with buffers, the size of the range used to extend simple elements
+is crucial. In addition to that, when buffering points and lines and calculating
+the area they share with other polygons, we could be more interested (and
+therefore assign more weight for the purpouses of our analysis) to those
+surfaces that are nearest to the points/lines. This is trivially represented as
+depicting the buffers with a gradient background, and could be accomplished by
+performing an arithmetic mean over the results of the operation over a set of
+results that differs by the buffer size.
