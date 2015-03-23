@@ -7,9 +7,9 @@ For example, it is meaningless to know that every plant lives at least within
 a distance of 20,000 Km from another one, because we already know that all
 plants lives on the Earth, and that Earths circumference is around 40,000 Km.
 Instead, we are generally more interested in knowing that a particular plant
-species lives only in a region, or that some animal species tend to avoid 
-entering a particular space. By knowing these latter results, and thanks to a
-semantic fied that computer does not yet own, we are able to guess the reasons
+species lives only in a region, or that some animal species tends to avoid 
+entering a particular space. By knowing these latter results, and thank to a
+semantic field that computer does not yet own, we are able to guess the reasons
 for these facts to happen.  
 Generally, we are intested only in a subset of all the results that an analysis
 can produce, because some are obvious, and others are completely meaningless.
@@ -42,6 +42,10 @@ dividing them by the types of geometric elements that interact.
 
 ####Point ↔ Point####
 
+![alt text](https://github.com/leonixyz/Thesis.git/point2point_distance.png "Distance between points")
+![alt text](https://github.com/leonixyz/Thesis.git/bufpoint2point_containment.png "Containment of a point into a buffered point")
+![alt text](https://github.com/leonixyz/Thesis.git/bufpoint2bufpoint_area.png "Area shared by two buffered points")
+
  * given two simple elements, calculate the distance between them
  * by buffering a point, check whether the other one is contained in the
    buffer surface
@@ -65,6 +69,10 @@ dividing them by the types of geometric elements that interact.
 
 ####Line ↔ Line####
 
+![alt text](https://github.com/leonixyz/Thesis.git/line2line_distance.png "Distance between two lines")
+![alt text](https://github.com/leonixyz/Thesis.git/bufline2line_segment.png "Intersection between a buffered line and a simple line")
+![alt text](https://github.com/leonixyz/Thesis.git/bufline2bufline_area.png "Area shared by two buffered lines")
+
  * given two simple elements, calculate the minimum distance between them
  * given two simple elements, check whether they intersect
  * by buffering one of the two lines, calculate the length of the segment of
@@ -79,6 +87,8 @@ dividing them by the types of geometric elements that interact.
  * by buffering the line, calculate the area the two surfaces share
 
 ####Polygon ↔ Polygon####
+
+![alt text](https://github.com/leonixyz/Thesis.git/poly2poly_area.png "Area shared by two polygons")
 
  * calculate the minimum distance between them
  * calculate the area they share
