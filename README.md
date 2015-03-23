@@ -42,9 +42,9 @@ dividing them by the types of geometric elements that interact.
 
 ####Point ↔ Point####
 
-![alt text](https://github.com/leonixyz/Thesis.git/point2point_distance.png "Distance between points")
-![alt text](https://github.com/leonixyz/Thesis.git/bufpoint2point_containment.png "Containment of a point into a buffered point")
-![alt text](https://github.com/leonixyz/Thesis.git/bufpoint2bufpoint_area.png "Area shared by two buffered points")
+![alt text](https://raw.githubusercontent.com/leonixyz/Thesis/master/point2point_distance.png "Distance between points")
+![alt text](https://raw.githubusercontent.com/leonixyz/Thesis/master/bufpoint2point_containment.png "Containment of a point into a buffered point")
+![alt text](https://raw.githubusercontent.com/leonixyz/Thesis/master/bufpoint2bufpoint_area.png "Area shared by two buffered points")
 
  * given two simple elements, calculate the distance between them
  * by buffering a point, check whether the other one is contained in the
@@ -69,9 +69,9 @@ dividing them by the types of geometric elements that interact.
 
 ####Line ↔ Line####
 
-![alt text](https://github.com/leonixyz/Thesis.git/line2line_distance.png "Distance between two lines")
-![alt text](https://github.com/leonixyz/Thesis.git/bufline2line_segment.png "Intersection between a buffered line and a simple line")
-![alt text](https://github.com/leonixyz/Thesis.git/bufline2bufline_area.png "Area shared by two buffered lines")
+![alt text](https://raw.githubusercontent.com/leonixyz/Thesis/master/line2line_distance.png "Distance between two lines")
+![alt text](https://raw.githubusercontent.com/leonixyz/Thesis/master/bufline2line_segment.png "Intersection between a buffered line and a simple line")
+![alt text](https://raw.githubusercontent.com/leonixyz/Thesis/master/bufline2bufline_area.png "Area shared by two buffered lines")
 
  * given two simple elements, calculate the minimum distance between them
  * given two simple elements, check whether they intersect
@@ -88,7 +88,7 @@ dividing them by the types of geometric elements that interact.
 
 ####Polygon ↔ Polygon####
 
-![alt text](https://github.com/leonixyz/Thesis.git/poly2poly_area.png "Area shared by two polygons")
+![alt text](https://raw.githubusercontent.com/leonixyz/Thesis/master/poly2poly_area.png "Area shared by two polygons")
 
  * calculate the minimum distance between them
  * calculate the area they share
