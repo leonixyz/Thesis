@@ -21,8 +21,8 @@ $page = new PageUtil(__FILE__);
     </head>
     <body>
         <?php
-                if(!isset($_REQUEST['user']) || !isset($_REQUEST['password'])) {
-                /* prompt the user to log in if not authentified */
+            if(!isset($_REQUEST['user']) || !isset($_REQUEST['password'])) {
+                /* prompt the user to log in if not authenticated */
                 die($LOGIN_BOX."\n</body>\n</html>");
             }
             else{
@@ -39,33 +39,10 @@ $page = new PageUtil(__FILE__);
         ?>
 
         <h2 class='centered'>Welcome!</h2>
-        <?php
-        $tables = $db->fetch("
-            SELECT table_name as \"Available Tables\"
-            FROM information_schema.tables
-            WHERE table_catalog='{$DB_NAME}'
-                AND table_schema='{$DB_IMPORT_SCHEMA}';
-        ");
-    
-        /*for($i=0; $i<count($tables); $i++){
-            $tables[$i]['Columns'] = 'none';
-        }*/
-
-            echo $page->getTable($tables);
-        ?>
+        <ul>
+            <li>import</li>
+            <li><a href='rules.php'>rules</a></li>
+            <li>analysis</li>
+        </ul>
     </body>
 </html>
-
-
-
-
-<?php
-/*
-select proname, proargs, prosrc
-from pg_catalog.pg_namespace n
-join pg_catalog.pg_proc p
-on pronamespace = n.oid
-where nspname = 'public'
-and proname like 'st\_%';
- */
-?>

@@ -65,6 +65,12 @@ class PageUtil{
 
         return $result;
     }
+
+    public function checkLogin(){
+        if(!isset($_SESSION['user']){
+            header('Location: /');
+        }
+    }
 }
 
 
