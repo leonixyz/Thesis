@@ -19,6 +19,9 @@ Data at our disposal consists in a large amount of records, graphically represen
 ###System's perspective of the analysis###
 
  1 Whenever a shapefile is uploaded through a PHP page, it is processed by `shp2pgsql` to get an SQL version that will be executed against the database.
+
  2 The tables created by the import are checked in order to provide to the user a list of attributes that are distinctive for the new data set. The system suggests some choices based on their value types and some other characteristics. When the user marks the attributes as distinctive, for each one of them a new empty column is added to the original plants data table.
+
  3 The list of all distinctive attributes of all data sets is presented to the user. After he/she selects some of them and eventually set their matching capabilities, these preference will be saved as a new rule.
+
  4 A page is presented to the user so that he/she can select a set of rules and a source data set (subset of plants). The rules are fired against the source data set and the relative columns are filled with the result values. These values are presented as an analysis.

@@ -1,0 +1,36 @@
+table{
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+th{
+    border: 1px solid black;
+    background: #ddd;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+td{
+    border: 1px solid black;
+}
+
+div.popup{
+    position: fixed;
+    padding: 10px;
+}
+
+div.info{
+    background: #aaf;
+}
+
+div.warning{
+    background: #faa;
+}
+
+h3.warning{
+    color: #f00;
+}
+
+.centered{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
